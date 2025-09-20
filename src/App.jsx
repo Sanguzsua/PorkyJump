@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./App.css"; 
 
 const GAME_WIDTH = 340;
 const GAME_HEIGHT = 220;
@@ -86,132 +87,43 @@ function App() {
     setScore(0);
   };
 
-  return (
-    <div
-      style={{
-        height: '100vh',
-        width: '100vw',
-        background: "#2196f3",
-        position: "relative",
-        overflow: "hidden",
-        touchAction: "manipulation",
-      }}
-      onClick={jump}
-      onTouchStart={jump}
-    >
-      {/* Suelo */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          bottom: 0,
-          width: "100%",
-          height: GROUND_HEIGHT,
-          background: "#388e3c",
-        }}
-      />
-      {/* Cerdito */}
-      <div
-        style={{
-          position: "absolute",
-          left: 30,
-          bottom: GROUND_HEIGHT + pigY,
-          width: PIG_SIZE,
-          height: PIG_SIZE,
-          background: "#ffb6c1",
-          borderRadius: "50%",
-        }}
-      />
-      {/* Obstáculos */}
-      {obstacles.map((obs, i) => (
+    return (
+      <div className="game-container" onClick={jump} onTouchStart={jump}>
+        <div className="ground" />
         <div
-          key={i}
+          className="pig"
           style={{
-            position: "absolute",
-            left: obs.x,
-            bottom: GROUND_HEIGHT,
-            width: OBSTACLE_WIDTH,
-            height: OBSTACLE_HEIGHT,
-            background: "#795548",
+            left: 30,
+            bottom: GROUND_HEIGHT + pigY,
+            width: PIG_SIZE,
+            height: PIG_SIZE,
           }}
         />
-      ))}
-      {/* Score */}
-      <div
-        style={{
-          position: "absolute",
-          top: 10,
-          left: 10,
-          color: "#fff",
-          fontWeight: "bold",
-          fontSize: 20,
-          textShadow: "1px 1px 2px #0008",
-        }}
-      >
-        {score}
-      </div>
-      {/* Game Over */}
-      {gameOver && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%,-50%)",
-            background: "#fff",
-            color: "#c33",
-            fontWeight: "bold",
-            fontSize: 22,
-            padding: 16,
-            borderRadius: 8,
-            boxShadow: "0 2px 8px #0003",
-            textAlign: "center",
-          }}
-        >
-          ¡Game Over!
-          <br />
-          <span style={{ color: "#333", fontSize: 16 }}>Puntuación: {score}</span>
-          <br />
-          <button
-            onClick={resetGame}
+        {obstacles.map((obs, i) => (
+          <div
+            key={i}
+            className="obstacle"
             style={{
-              marginTop: 10,
-              fontSize: 16,
-              padding: "6px 18px",
-              borderRadius: 6,
-              border: "none",
-              background: "#2196f3",
-              color: "#fff",
-              fontWeight: "bold",
-              cursor: "pointer",
+              left: obs.x,
+              bottom: GROUND_HEIGHT,
+              width: OBSTACLE_WIDTH,
+              height: OBSTACLE_HEIGHT,
             }}
-          >
-            Reiniciar
-          </button>
-        </div>
-      )}
-      {/* Mensaje de inicio */}
-      {score === 0 && !gameOver && (
-        <div
-          style={{
-            position: "absolute",
-            top: "40%",
-            left: 0,
-            width: "100%",
-            textAlign: "center",
-            color: "#333",
-            fontSize: 16,
-            fontWeight: "bold",
-            background: "#fff8",
-            padding: 10,
-            borderRadius: 8,
-          }}
-        >
-          ¡Toca para saltar!
-        </div>
-      )}
-    </div>
-  );
+          />
+        ))}
+        <div className="score">{score}</div>
+        {gameOver && (
+          <div className="game-over">
+            ¡Game Over!<br />
+            <span>Puntuación: {score}</span><br />
+            <button onClick={resetGame}>Reiniciar</button>
+          </div>
+        )}
+        {score === 0 && !gameOver && (
+          <div className="start-msg">¡Toca para saltar!</div>
+        )}
+      </div>
+    );
 }
 
 export default App;
