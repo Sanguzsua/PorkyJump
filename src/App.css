@@ -1,0 +1,48 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #87CEEB;
+  height: 100%;
+  overflow: hidden;
+}
+
+.game {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(#87CEEB 70%, #3f9b0b 30%); /* cielo y pasto */
+  overflow: hidden;
+}
+
+/* Marranito */
+.pig {
+  position: absolute;
+  left: 50px;
+  width: 50px;
+  height: 50px;
+  background: pink;
+  border-radius: 50%;
+  bottom: 150px; /* altura base */
+  border: 2px solid #c06;
+}
+
+/* Valla */
+.obstacle {
+  position: absolute;
+  bottom: 150px;
+  width: 30px;
+  height: 60px;
+  background: brown;
+  border: 2px solid #5c3;
+}
+
+/* Puntaje */
+.score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+}
