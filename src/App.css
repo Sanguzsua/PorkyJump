@@ -1,16 +1,16 @@
+
 /* ==== Estilos generales ==== */
 body {
   margin: 0;
   padding: 0;
-  background: #2196f3; /* azul del fondo */
+  background: #2196f3;
   min-height: 100vh;
-  /* 👇 Quitamos flex para que no se centre */
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ==== Contenedor del juego a pantalla completa ==== */
+/* ==== Contenedor del juego centrado ==== */
 .game-container {
   position: relative;
   width: 340px;
@@ -18,7 +18,6 @@ body {
   max-width: 98vw;
   max-height: 60vh;
   background: #2196f3;
-  margin: 40px auto;
   border-radius: 18px;
   box-shadow: 0 4px 24px #0002;
   overflow: hidden;
