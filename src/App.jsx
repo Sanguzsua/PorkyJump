@@ -17,14 +17,14 @@ function App() {
   const [obstacles, setObstacles] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
-  // Estado seguro para SSR y WebView: inicia con valores por defecto
+  // Estado seguro para SSR y WebView: inicia con valores por defecto y sincrónico
   const getSafeWindow = () => {
     if (typeof window !== 'undefined') {
       return { w: window.innerWidth, h: window.innerHeight };
     }
     return { w: 360, h: 640 };
   };
-  const [windowSize, setWindowSize] = useState(getSafeWindow());
+  const [windowSize, setWindowSize] = useState(() => getSafeWindow());
   useEffect(() => {
     function handleResize() {
       setWindowSize(getSafeWindow());
@@ -161,8 +161,10 @@ function App() {
   return (
     <div
       style={{
-        minHeight: '100vh',
+        minHeight: '100dvh',
         minWidth: '100vw',
+        height: '100dvh',
+        width: '100vw',
         background: "linear-gradient(to top, #b3e0ff 70%, #e6f7ff 100%)",
         display: "flex",
         alignItems: "center",
