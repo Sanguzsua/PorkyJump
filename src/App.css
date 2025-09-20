@@ -13,13 +13,19 @@ body {
 /* ==== Contenedor del juego a pantalla completa ==== */
 .game-container {
   position: relative;
-  width: 100vw; /* ocupa todo el ancho */
-  height: 100vh; /* ocupa todo el alto */
-  background: #2196f3; /* color de fondo */
-  border-radius: 0; /* sin esquinas redondeadas */
-  box-shadow: none; /* sin sombra */
+  width: 340px;
+  height: 220px;
+  max-width: 98vw;
+  max-height: 60vh;
+  background: #2196f3;
+  margin: 40px auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #0002;
   overflow: hidden;
   touch-action: manipulation;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 /* ==== Suelo ==== */
