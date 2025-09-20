@@ -17,12 +17,22 @@ function App() {
   const [obstacles, setObstacles] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
-  const [windowW, setWindowW] = useState(window.innerWidth);
-  // Responsive: actualizar tamaño
+  // Estado seguro para SSR y WebView: inicia con valores por defecto
+  const getSafeWindow = () => {
+    if (typeof window !== 'undefined') {
+      return { w: window.innerWidth, h: window.innerHeight };
+    }
+    return { w: 360, h: 640 };
+  };
+  const [windowSize, setWindowSize] = useState(getSafeWindow());
   useEffect(() => {
-    const handleResize = () => setWindowW(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    function handleResize() {
+      setWindowSize(getSafeWindow());
+    }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
 
@@ -142,8 +152,11 @@ function App() {
 
   // Responsive scaling
   // Mejorar escala para móvil y asegurar fondo visible
-  const windowH = typeof window !== 'undefined' ? window.innerHeight : 600;
-  const scale = Math.min(1, windowW / (GAME_WIDTH + 16), windowH / (GAME_HEIGHT + 32));
+  const scale = Math.min(
+    1,
+    windowSize.w / (GAME_WIDTH + 16),
+    windowSize.h / (GAME_HEIGHT + 32)
+  );
 
   return (
     <div
