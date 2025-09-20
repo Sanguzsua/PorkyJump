@@ -141,29 +141,42 @@ function App() {
   };
 
   // Responsive scaling
-  const scale = Math.min(1, windowW / (GAME_WIDTH + 16));
+  // Mejorar escala para móvil y asegurar fondo visible
+  const windowH = typeof window !== 'undefined' ? window.innerHeight : 600;
+  const scale = Math.min(1, windowW / (GAME_WIDTH + 16), windowH / (GAME_HEIGHT + 32));
 
   return (
     <div
       style={{
-        width: GAME_WIDTH * scale,
-        height: GAME_HEIGHT * scale,
+        minHeight: '100vh',
+        minWidth: '100vw',
         background: "linear-gradient(to top, #b3e0ff 70%, #e6f7ff 100%)",
-        position: "relative",
-        overflow: "hidden",
-        cursor: "pointer",
-        userSelect: "none",
-        margin: "0 auto",
-        borderRadius: 18 * scale,
-        boxShadow: "0 4px 24px #0002",
-        border: "2px solid #aee",
-        touchAction: "manipulation",
-        maxWidth: "100vw",
-        maxHeight: "90vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "auto",
       }}
-      onClick={jump}
-      onTouchStart={jump}
     >
+      <div
+        style={{
+          width: GAME_WIDTH * scale,
+          height: GAME_HEIGHT * scale,
+          background: "linear-gradient(to top, #b3e0ff 70%, #e6f7ff 100%)",
+          position: "relative",
+          overflow: "hidden",
+          cursor: "pointer",
+          userSelect: "none",
+          margin: "0 auto",
+          borderRadius: 18 * scale,
+          boxShadow: "0 4px 24px #0002",
+          border: "2px solid #aee",
+          touchAction: "manipulation",
+          maxWidth: "100vw",
+          maxHeight: "90vh",
+        }}
+        onClick={jump}
+        onTouchStart={jump}
+      >
       {/* Suelo con textura */}
       <div
         style={{
@@ -404,6 +417,7 @@ function App() {
           ¡Toca para saltar!
         </div>
       )}
+      </div>
     </div>
   );
 }
