@@ -161,22 +161,25 @@ function App() {
   return (
     <div
       style={{
-        minHeight: '100dvh',
+        minHeight: '100vh', // ← corregido
         minWidth: '100vw',
-        height: '100dvh',
+        height: '100vh', // ← corregido
         width: '100vw',
-        background: "linear-gradient(to top, #b3e0ff 70%, #e6f7ff 100%)",
+       // fondo global
+        background: "#87CEEB", // azul cielo
+
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        overflow: "auto",
+        overflow: "hidden", // ← corregido
       }}
     >
       <div
         style={{
           width: GAME_WIDTH * scale,
           height: GAME_HEIGHT * scale,
-          background: "linear-gradient(to top, #b3e0ff 70%, #e6f7ff 100%)",
+         // fondo del área del juego
+          background: "#87CEEB", // azul cielo
           position: "relative",
           overflow: "hidden",
           cursor: "pointer",
@@ -185,7 +188,7 @@ function App() {
           borderRadius: 18 * scale,
           boxShadow: "0 4px 24px #0002",
           border: "2px solid #aee",
-          touchAction: "manipulation",
+          // touchAction: "manipulation", // ← comentado para WebView
           maxWidth: "100vw",
           maxHeight: "90vh",
         }}
@@ -200,8 +203,8 @@ function App() {
           bottom: 0,
           width: "100%",
           height: GROUND_HEIGHT * scale,
-          background:
-            "repeating-linear-gradient(45deg, #e0cda9, #e0cda9 12px, #d1bfa3 12px, #d1bfa3 24px)",
+          background: "#3f9b0b",
+
           borderTop: `${2 * scale}px solid #bfa76f`,
           boxShadow: `0 -2px 8px #0002`,
         }}
