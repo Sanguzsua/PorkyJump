@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 
+
 const GRAVITY = 1.1;
 const JUMP_STRENGTH = 15;
 const OBSTACLE_INTERVAL = 1200; // ms
