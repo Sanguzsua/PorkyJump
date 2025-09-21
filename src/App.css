@@ -18,8 +18,6 @@ html, body, #root, .game-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -34,9 +32,7 @@ html, body, #root, .game-container {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 6vh; /* Ajustado a móviles */
-  min-height: 18px;
-  max-height: 40px;
+  height: 32px; /* Usa un valor fijo que coincida con la lógica */
   background-color: #2ecc71;
 }
 
@@ -45,24 +41,12 @@ html, body, #root, .game-container {
   position: absolute;
   background-color: #e74c3c;
   border-radius: 50%;
-  width: 8vw;
-  height: 8vw;
-  min-width: 28px;
-  min-height: 28px;
-  max-width: 60px;
-  max-height: 60px;
 }
 
 /* 🔹 Obstáculos */
 .obstacle {
   position: absolute;
   background-color: #2c3e50;
-  width: 7vw;
-  min-width: 18px;
-  max-width: 40px;
-  height: 18vh;
-  min-height: 30px;
-  max-height: 120px;
   border-radius: 1vw;
   z-index: 2;
 }
@@ -124,13 +108,5 @@ html, body, #root, .game-container {
   /* Ocultar juego cuando está en vertical */
   #root > * {
     display: none !important;
-  }
-}
-
-/* 🔹 Ajustes extra para pantallas muy pequeñas */
-@media (max-width: 600px), (max-height: 600px) {
-  html, body, #root, .game-container {
-    width: 100vw !important;
-    height: 100vh !important;
   }
 }
